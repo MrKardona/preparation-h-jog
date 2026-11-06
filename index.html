@@ -805,16 +805,7 @@
   </a>
 
   <script>
-    const cargarPixel = ()=>{
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','1045709320475853');
-      fbq('track','PageView');
-      fbq('track','ViewContent',{content_ids:['272529406'],content_type:'product',value:89900,currency:'COP'});
-    };
+    // Sin píxel de Meta: Meta clasificó este dominio como salud y restringe sus datos (2026-11-06).
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js',new Date());
@@ -826,16 +817,13 @@
       document.head.appendChild(s);
     };
     window.addEventListener('load', ()=>{
-      const cargar = ()=>{ cargarPixel(); cargarAnalytics(); };
-      if('requestIdleCallback' in window) requestIdleCallback(cargar,{timeout:3000});
-      else setTimeout(cargar,1500);
+      if('requestIdleCallback' in window) requestIdleCallback(cargarAnalytics,{timeout:3000});
+      else setTimeout(cargarAnalytics,1500);
     });
     document.addEventListener('click', (e)=>{
       if(e.target.closest('a[href*="/cart-link/"]')){
-        if(window.fbq) fbq('track','AddToCart',{content_ids:['272529406'],content_type:'product',value:89900,currency:'COP'});
         gtag('event','add_to_cart',{currency:'COP',value:89900,items:[{item_id:'272529406',item_name:'Preparation H Ungüento 28 g',price:89900,quantity:1}]});
       }else if(e.target.closest('a[href*="wa.me"]')){
-        if(window.fbq) fbq('track','Contact');
         gtag('event','generate_lead',{method:'whatsapp'});
       }
     });
